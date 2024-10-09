@@ -16,7 +16,7 @@ const instagramPosting = require('./robots/instagram-post')
 async function startServer() {
   // Defina a rota para servir a imagem
   fastify.get('/imagem', (request, reply) => {
-    const imagePath = path.join(__dirname, './upload/imagem-com-texto.jpg'); // Ajuste o caminho conforme necessário
+    const imagePath = join(__dirname, './upload/imagem-com-texto.jpg'); // Ajuste o caminho conforme necessário
     reply.sendFile(imagePath);
   });
 
