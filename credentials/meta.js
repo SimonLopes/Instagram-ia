@@ -1,0 +1,5 @@
+const userId = '17841469515751963';
+const accessToken = 'EAAIPuIlx1ioBOZBzWG7g32BkE38otNnaOnoXwEoOrHkPiWBUD3D9TuZBkfLolR5WbMGYKqBAhPiIdZAAQYqMDF9GbRIZBKVt11yuDFZBM3YtfzveB4ZAQkEZAWKdEhx3hLRTQiheZBNknmyt7Egv7YxZAkETFPv5sqAFJC1wRWZBno39khTgAVL2k4oDwWNdsMY0ZC5NArfKxqonGyr1U19VUNJQZBgny4OEGBEeJq8ZD';
+
+
+module.exports = {userId, accessToken}
