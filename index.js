@@ -22,7 +22,10 @@ async function startServer() {
 
   // Inicie o servidor
   try {
-    await fastify.listen(3000);
+    await fastify.listen({
+      host: '0.0.0.0',
+      port: process.env.PORT ? Number(process.env.PORT) : 3333
+    });
     fastify.log.info(`Servidor rodando na porta 3000`);
   } catch (err) {
     fastify.log.error(err);
