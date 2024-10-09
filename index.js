@@ -9,6 +9,7 @@ const captionGenerate = require('./robots/caption-generate')
 const textGenerate = require('./robots/text-generate')
 const textToImage = require('./robots/text-to-image')
 const imageEditing = require('./robots/image-editing')
+const uploadImageToServer = require('./robots/image-save')
 const instagramPosting = require('./robots/instagram-post')
 
 
@@ -56,6 +57,8 @@ async function processImage(mode = 'release', generateNewImage = false, width, h
   const imageText = await textToImage(width, height, topText, bottomText)
   const editImage = await imageEditing(localImagePath, width, height, imageText, outputImagePath)
 
+  const uploadResponse = await uploadImageToServer(outputImagePath);
+
   if (mode === 'debug') {
     console.log(`
 
@@ -66,6 +69,7 @@ async function processImage(mode = 'release', generateNewImage = false, width, h
       textGenerate: ${getText}
       textToImage: ${imageText}
       imageEditing: ${JSON.stringify(editImage)}
+      imageSaving: ${uploadResponse}
 
       \x1b[32m
       FINISH DEBUG AND PROCESS
@@ -78,7 +82,7 @@ async function processImage(mode = 'release', generateNewImage = false, width, h
   } else if (mode === 'release') {
     console.log('Image processing complete in release mode.');
   }
-  return {editImage, getText, getCaption};
+  return {editImage, getText, getCaption, uploadResponse};
 
 }
 
