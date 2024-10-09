@@ -2,6 +2,7 @@ const axios = require('axios');
 const fs = require('fs');
 const sharp = require('sharp');
 const { join } = require('path');
+const fastify = require('fastify')({ logger: true });
 
 const createImageIA = require("./robots/image-generate");
 const imageDownload = require('./robots/image-download')
@@ -10,6 +11,24 @@ const textGenerate = require('./robots/text-generate')
 const textToImage = require('./robots/text-to-image')
 const imageEditing = require('./robots/image-editing')
 const instagramPosting = require('./robots/instagram-post')
+
+
+async function startServer() {
+  // Defina a rota para servir a imagem
+  fastify.get('/imagem', (request, reply) => {
+    const imagePath = path.join(__dirname, './upload/imagem-com-texto.jpg'); // Ajuste o caminho conforme necessário
+    reply.sendFile(imagePath);
+  });
+
+  // Inicie o servidor
+  try {
+    await fastify.listen(3000);
+    fastify.log.info(`Servidor rodando na porta 3000`);
+  } catch (err) {
+    fastify.log.error(err);
+    process.exit(1);
+  }
+}
 
 
 async function processImage(mode = 'release', generateNewImage = false, width, height, localImagePath, outputImagePath, promptImage, promptText) {
@@ -109,4 +128,5 @@ async function init() {
     });
 }
 
+startServer();
 init()
