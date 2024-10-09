@@ -101,7 +101,7 @@ async function init() {
   processImage(process.argv[2] || 'release', generateNewImage, width, height, localImagePath, outputImagePath, promptImage, promptText) // Pode chamar com "node script.js debug" ou "node script.js release"
     .then(result => {
       //const posting = instagramPosting(result.getCaption, 'https://i.imgur.com/B8ta5Aa.jpeg')
-      console.log(posting);
+      console.log(result);
     })
     .catch(err => {
       console.error('Error:', err);
