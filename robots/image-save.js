@@ -1,6 +1,6 @@
 const fs = require('fs');
 const axios = require('axios');
-
+const FormData = require('form-data');
 
 async function uploadImageToServer(imagePath) {
     const serverUrl = `https://${process.env.URL_SERVER}.com/upload`
