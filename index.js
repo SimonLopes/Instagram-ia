@@ -9,7 +9,6 @@ const captionGenerate = require('./robots/caption-generate')
 const textGenerate = require('./robots/text-generate')
 const textToImage = require('./robots/text-to-image')
 const imageEditing = require('./robots/image-editing')
-const uploadImageToServer = require('./robots/image-save')
 const instagramPosting = require('./robots/instagram-post')
 
 
@@ -57,8 +56,6 @@ async function processImage(mode = 'release', generateNewImage = false, width, h
   const imageText = await textToImage(width, height, topText, bottomText)
   const editImage = await imageEditing(localImagePath, width, height, imageText, outputImagePath)
 
-  const uploadResponse = await uploadImageToServer(outputImagePath);
-
   if (mode === 'debug') {
     console.log(`
 
@@ -82,7 +79,7 @@ async function processImage(mode = 'release', generateNewImage = false, width, h
   } else if (mode === 'release') {
     console.log('Image processing complete in release mode.');
   }
-  return {editImage, getText, getCaption, uploadResponse};
+  return {editImage, getText, getCaption};
 
 }
 
@@ -95,7 +92,7 @@ async function init() {
   const height = 1280;
 
   const localImagePath = join(__dirname, 'imagem-baixada.jpg');
-  const outputImagePath = join(__dirname, 'imagem-com-texto.jpg');
+  const outputImagePath = join(__dirname, './upload/imagem-com-texto.jpg');
   
   const promptImage = "A bright and inspiring landscape that radiates happiness and lightness. The scene features a meadow. Soft sunlight bathes the entire area, casting a warm glow, creating a sense of calm and serenity. The overall atmosphere is uplifting, positive, and filled with a sense of joyful tranquility."//"a dark and shadowy figure of a wizard, an image darkened with a lot of shadows (with fires)";
   const promptText = "Olá chat, a partir de agora eu quero que você gere apenas uma frase inspiradora para o dia";
