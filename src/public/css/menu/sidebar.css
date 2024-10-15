@@ -1,0 +1,31 @@
+.sidebar {
+    width: 250px;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 20px;
+    color: rgb(55, 55, 55);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: rgb(55, 55, 55);
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    padding: 15px 10px;
+
+}
+.active {
+    background-color: #0055ff;
+    color: #ffffff !important;
+    border-radius: 5px;
+    padding: 15px 10px;
+}

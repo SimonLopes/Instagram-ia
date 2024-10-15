@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/public/css/dashboard/styles.css"> <!-- Link para o CSS -->
+    <script src="/public/js/utils/auth.js">
+       
+    </script>
+
+</head>
+<body>
+    <!-- Navbar -->
+    <div id="navbar-container"></div>
+    <div class="container">
+        <div id="sidebar-container"></div>
+
+        <!-- Conteúdo Principal -->
+        <main class="main-content">
+            <div class="stats">
+                <div class="stat-item">
+                    <h3 id="totalImages">0</h3>
+                    <p>Imagens Geradas</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="totalCredentials">0</h3>
+                    <p>Credenciais Cadastradas</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="totalPrompts">0</h3>
+                    <p>Prompts Cadastrados</p>
+                </div>
+            </div>
+
+            <div class="gallery">
+                <h2>Galeria de Imagens Geradas</h2>
+                <div class="image-grid" id="imageGallery">
+                    
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/public/js/dashboard/dashboard.js"></script>
+    <script src="/public/js/dashboard/slidebar.js"></script>
+    <script src="/public/js/menu/loadComponents.js"></script>
+    <script src="/public/js/utils/api.js"></script>
+
+    <script>
+        loadComponent('#navbar-container', '/components/menu/navbar.html', '/public/css/menu/navbar.css', '/public/js/menu/navbar.js');
+        loadComponent('#sidebar-container', '/components/menu/sidebar.html', '/public/css/menu/sidebar.css', '/public/js/menu/sidebar.js');
+    </script>
+</body>
+</html>

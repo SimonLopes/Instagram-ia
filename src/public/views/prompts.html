@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/public/plugins/css/multiple-select.min.css">
+    <script src="/public/plugins/js/multiple-select.min.js"></script>
+    <title>Gerenciar Prompts</title>
+    <link rel="stylesheet" href="/public/css/prompts/styles.css">
+    <!-- Certifique-se de que o caminho do CSS está correto -->
+</head>
+
+<body>
+    <div id="navbar-container"></div>
+
+
+    <div class="container">
+        <div id="sidebar-container"></div>
+        <main class="main-content">
+            <h1>Gerenciar prompts</h1>
+
+            <!-- Formulário para adicionar nova credencial -->
+            <form id="addPromptForm">
+                <label for="promptText">Prompt para geração de texto:</label>
+                <input type="text" id="promptText" name="promptText" required>
+
+                <label for="promptImage">Prompt para geração de imagem:</label>
+                <input type="text" id="promptImage" name="promptImage" required>
+                <div class="form-group row">
+                    <label class="col-sm-2">
+                        Atribuir instagram IDs
+                    </label>
+                    <div class="select-input">
+                        <select multiple="multiple" class="multiple-select" id="multiple-select" data-width="100%">
+
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit">Adicionar Prompt</button>
+            </form>
+
+            <h2>Prompts Cadastrados</h2>
+            <table id="promptsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Prompt do texto</th>
+                        <th>Prompt da imagem</th>
+                        <th>Instagram IDs</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- As credenciais serão adicionadas aqui via JavaScript -->
+                </tbody>
+            </table>
+        </main>
+    </div>
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <h3>Confirmar Remoção</h3>
+            <p>Você tem certeza que deseja remover este prompt?</p>
+            <button id="confirmBtn" class="btn-confirm">Confirmar</button>
+            <button id="cancelBtn" class="btn-cancel">Cancelar</button>
+        </div>
+    </div>
+    <script src="/public/js/prompts/prompts.js"></script> 
+    <script src="/public/js/menu/loadComponents.js"></script>
+    <script src="/public/js/utils/api.js"></script>
+    <script>
+        loadComponent('#navbar-container', '/components/menu/navbar.html', '/public/css/menu/navbar.css', '/public/js/menu/navbar.js');
+        loadComponent('#sidebar-container', '/components/menu/sidebar.html', '/public/css/menu/sidebar.css', '/public/js/menu/sidebar.js');
+    </script>
+</body>
+
+</html>

@@ -4,24 +4,22 @@ const sharp = require('sharp');
 const { join } = require('path');
 const fastify = require('fastify')({ logger: true });
 
-const createImageIA = require("./robots/image-generate");
-const imageDownload = require('./robots/image-download')
-const captionGenerate = require('./robots/caption-generate')
-const textGenerate = require('./robots/text-generate')
-const textToImage = require('./robots/text-to-image')
-const imageEditing = require('./robots/image-editing')
-const instagramPosting = require('./robots/instagram-post')
+const createImageIA = require("./src/robots/image-generate");
+const imageDownload = require('./src/robots/image-download')
+const captionGenerate = require('./src/robots/caption-generate')
+const textGenerate = require('./src/robots/text-generate')
+const textToImage = require('./src/robots/text-to-image')
+const imageEditing = require('./src/robots/image-editing')
+const instagramPosting = require('./src/robots/instagram-post')
 
 
 async function startServer() {
-  // Defina a rota para servir a imagem
   fastify.get('/imagem', (request, reply) => {
     const buffer = fs.readFileSync(join(__dirname, './upload/imagem-com-texto.jpg'))
-    reply.type('image/jpg') // if you don't set the content, the image would be downloaded by browser instead of viewed
+    reply.type('image/jpg')
     reply.send(buffer)
   });
 
-  // Inicie o servidor
   try {
     await fastify.listen({
       host: '0.0.0.0',
