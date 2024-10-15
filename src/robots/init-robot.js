@@ -89,7 +89,7 @@ async function init() {
     const height = 1280;
 
     const localImagePath = join(__dirname, 'imagem-baixada.jpg');
-    const outputImagePath = join(__dirname, './upload/imagem-com-texto.jpg');
+    const outputImagePath = join(__dirname, '../public/images/imagem-com-texto.jpg');
 
     const promptImage = "A bright and inspiring landscape that radiates happiness and lightness. The scene features a meadow. Soft sunlight bathes the entire area, casting a warm glow, creating a sense of calm and serenity. The overall atmosphere is uplifting, positive, and filled with a sense of joyful tranquility."//"a dark and shadowy figure of a wizard, an image darkened with a lot of shadows (with fires)";
     const promptText = "Olá chat, a partir de agora eu quero que você gere apenas uma frase inspiradora para o dia";
